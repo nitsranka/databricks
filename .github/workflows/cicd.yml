@@ -56,7 +56,7 @@ jobs:
 
       - name: Merge changes from staging
         run: |
-          git merge origin/staging 
+          git merge origin/staging  --allow-unrelated-histories
 
       - name: Push changes to production branch
         env:
