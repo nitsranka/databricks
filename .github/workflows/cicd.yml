@@ -52,7 +52,7 @@ jobs:
         run: git checkout production
 
       - name: Merge staging into production
-        run: git merge origin/staging
+        run: git merge origin/staging  --allow-unrelated-histories
         
       - name: Set Git user email and name
         run: |
