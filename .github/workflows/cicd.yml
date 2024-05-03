@@ -45,11 +45,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Switch to production branch
-        run: |
-          
-          git checkout -B production origin/staging
+      - name: Fetch all branches
+        run: git fetch --all
 
+      - name: Switch to production branch
+        run: git checkout production
+
+      - name: Merge staging into production
+        run: git merge origin/staging
+        
       - name: Set Git user email and name
         run: |
           git config --global user.email "git@github.com"
