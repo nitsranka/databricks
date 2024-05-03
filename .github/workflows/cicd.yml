@@ -48,7 +48,7 @@ jobs:
       - name: Switch to production branch
         run: |
           
-          git checkout -B production origin/production
+          git checkout -B production origin/staging
 
       - name: Set Git user email and name
         run: |
