@@ -47,7 +47,7 @@ jobs:
 
       - name: Switch to production branch
         run: |
-          # git fetch --all
+          
           git checkout -B production origin/production
 
       - name: Set Git user email and name
