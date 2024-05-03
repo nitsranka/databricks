@@ -51,13 +51,15 @@ jobs:
       - name: Switch to production branch
         run: git checkout production
 
-      - name: Merge staging into production
-        run: git merge origin/staging  --allow-unrelated-histories
-        
       - name: Set Git user email and name
         run: |
           git config --global user.email "git@github.com"
           git config --global user.name "Shaswat19"
+
+      - name: Merge staging into production
+        run: git merge origin/staging  --allow-unrelated-histories
+        
+      
 
       - name: Merge changes from staging
         run: |
