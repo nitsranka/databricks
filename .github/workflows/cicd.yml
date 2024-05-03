@@ -42,8 +42,8 @@ jobs:
       #     DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
       #   run: |
       #     databricks repos update --branch production --path /Repos/shaswat@onebyzero/databricks_production
-      - name: Checkout code
-        uses: actions/checkout@v2
+      # - name: Checkout code
+      #   uses: actions/checkout@v2
 
       - name: Switch to production branch
         run: |
