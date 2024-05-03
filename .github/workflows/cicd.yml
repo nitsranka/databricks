@@ -57,7 +57,7 @@ jobs:
 
       - name: Merge changes from staging
         run: |
-          git add .
+          
           git merge origin/staging --no-edit --allow-unrelated-histories
           
 
