@@ -25,34 +25,13 @@ jobs:
     environment: 
       name: Production 
     steps:
-     
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Fetch all branches
-        run: git fetch --all
-
-      - name: Switch to production branch
-        run: git checkout production
-
-      - name: Set Git user email and name
-        run: |
-          git config --global user.email "git@github.com"
-          git config --global user.name "Shaswat19"
-
-      - name: Merge staging into production
-        run: git merge origin/staging  --allow-unrelated-histories
-        
-      
-
-      - name: Merge changes from staging
-        run: |
-          
-          git merge origin/staging --no-edit --allow-unrelated-histories
-          
-
-      - name: Push changes to production branch
-        env:
-            GH_PAT: ${{ secrets.GH_PAT }}
-        run: git push origin production
+    - uses: actions/checkout@v3
+    
+    - name: Merge stage -> prod
+      run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'actions@github.com'
+        git checkout prod
+        git merge --no-ff stage -m "Merge stage branch into prod"
+        git push origin prod
         
