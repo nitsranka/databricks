@@ -25,8 +25,7 @@ jobs:
     environment: 
       name: Production 
     steps:
-    
-    
+    - uses: actions/checkout@v3
     - name: Merge stage -> prod
       run: |
         git config --global user.name 'GitHub Actions'
