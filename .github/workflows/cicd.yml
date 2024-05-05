@@ -34,6 +34,8 @@ jobs:
         git fetch --all
         git checkout -b production origin/production
         git merge --allow-unrelated-histories staging
+        git add .
+        git commit -m "Chnages Merge"
         git push origin production
 
         
