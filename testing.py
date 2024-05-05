@@ -1,1 +1,1 @@
-print('Successful - 54')
+print('Successful - 5')
