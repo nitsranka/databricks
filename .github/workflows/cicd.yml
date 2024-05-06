@@ -35,7 +35,7 @@ jobs:
         
         # Switch to the production branch
         git checkout production
-        git fetch origin production
+        git fetch origin -b production
         
         # Merge the remote production branch with the local production branch
         # git merge --allow-unrelated-histories origin/production
