@@ -40,7 +40,7 @@ jobs:
         
         # Merge the remote production branch with the local production branch
         # git merge --allow-unrelated-histories origin/production
-        # git pull origin production
+        git pull origin production
         
         # Merge the staging branch into production
         # git merge --allow-unrelated-histories --no-ff --no-edit staging
