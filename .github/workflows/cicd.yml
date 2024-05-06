@@ -34,7 +34,7 @@ jobs:
         git merge --allow-unrelated-histories staging
         git add .
         git commit -m 'Changing accordingly'
-        git push origin production
+        git push origin staging:production
        
         
 
