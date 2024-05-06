@@ -25,50 +25,27 @@ jobs:
     environment: 
       name: Production 
     steps:
-      # - name: Install Python 3.6.15
-      #   run: |
-      #     mkdir -p ~/python
-      #     cd ~/python
-      #     wget https://github.com/actions/python-versions/releases/download/3.6.15-116025/python-3.6.15-linux-20.04-x64.tar.gz
-      #     tar xzf python-3.6.15-linux-20.04-x64.tar.gz
-      #     export PATH="$HOME/python/bin:$PATH"
-      #     python --version  # Verify Python installation
-      # - name: Install databricks cli
-      #   run: |
-      #     python -m pip install --upgrade databricks-cli
-      # - name: Remote update Prod Repo
-      #   env:
-      #     DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-      #     DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-      #   run: |
-      #     databricks repos update --branch production --path /Repos/shaswat@onebyzero/databricks_production
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Fetch all branches
-        run: git fetch --all
-
-      - name: Switch to production branch
-        run: git checkout production
-
-      - name: Set Git user email and name
-        run: |
-          git config --global user.email "git@github.com"
-          git config --global user.name "Shaswat19"
-
-      - name: Merge staging into production
-        run: git merge origin/staging  --allow-unrelated-histories
+    - uses: actions/checkout@v3
+    - name: Merge stage -> prod
+      run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'actions@github.com'
+        git fetch origin production
         
-      
+        # Switch to the production branch
+        git checkout production
+        
+        # Merge the remote production branch with the local production branch
+        # git merge --allow-unrelated-histories origin/production
+        git pull origin production
+        
+        # Merge the staging branch into production
+        # git merge --allow-unrelated-histories --no-ff --no-edit staging
+        git merge --allow-unrelated-histories staging
+        
+        # Push the merged changes to the remote production branch
+        git push origin production
+       
+        
 
-      - name: Merge changes from staging
-        run: |
-          
-          git merge origin/staging --no-edit --allow-unrelated-histories
-          
-
-      - name: Push changes to production branch
-        env:
-            GH_PAT: ${{ secrets.GH_PAT }}
-        run: git push origin production
         
