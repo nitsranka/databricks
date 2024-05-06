@@ -1,1 +1,1 @@
-hii
+Print('test')
